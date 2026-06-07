@@ -2,13 +2,6 @@ name: DJLServing client tests
 
 on:
   pull_request:
-    paths-ignore:
-      - "**.md"
-      - "**.ipynb"
-      - "**.json"
-      - "**.html"
-      - "**.js"
-      - "**.css"
   workflow_dispatch:
 
 jobs:
@@ -62,7 +55,7 @@ jobs:
           cd tests
           djl-serving -m test::Python=file://$PWD/python &> output.log &
           sleep 15
-          python integration/test_client.py
+          python tests/integration/test_client.py
           jobs
           kill %1
       - name: On failure step
